@@ -1,4 +1,3 @@
-// Assignment Code
 //Setting up variables
 var generateBtn = document.getElementById("generate");
 
@@ -7,6 +6,74 @@ var lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p"
 var specialCharacters = ["!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~"]
 var numericCharacters = ["0","1","2","3","4","5","6","7","8","9"]
 
+
+//Function for user information
+function userInfo(){
+  var passwordLength = parseInt(prompt("How long would you like your password to be? Password should be between 8 and 128 characters long"));
+    if(isNaN(passwordLength) === true){
+      alert("Please enter a number")
+      return
+    }
+  
+  if(passwordLength < 8 || passwordLength > 128){
+      alert("Please select the length of your password. Number between 8 and 128 should be entered.")
+      return
+    }
+
+  var hasUpper = confirm("Do you want your password to include uppercase letters?");
+  var hasLower = confirm("Do you want your password to include lowercase letters?");
+  var hasSpecial = confirm("Do you want your password to contain special characters?");
+  var hasNumeric = confirm("Do you want your password to contain numbers?");
+  if(hasUpper === false && hasLower === false && hasSpecial === false && hasNumeric === false){ 
+    alert("Please select at least one of the properties listed")
+    return
+  }
+  var userOption = {
+    hasUpper, passwordLength, hasLower, hasSpecial, hasNumeric
+  }
+  return userOption 
+}
+
+function randomizer(arr) {
+  var randIndex = Math.floor(Math.random() * arr.length);
+  var randElement = arr[randIndex];
+  return randElement;
+}
+
+// Function for generate password
+function generatePassword(){
+var userOption = userInfo()
+var password = []
+var possibleOption = []
+var guaranteedOption = []
+
+if(userOption.hasUpper){
+  possibleOption = possibleOption.concat(upperCase)
+  guaranteedOption.push(randomizer(upperCase))
+}
+if(userOption.hasLower){
+  possibleOption = possibleOption.concat(lowerCase)
+  guaranteedOption.push(randomizer(lowerCase))
+}
+if(userOption.hasSpecial){
+  possibleOption = possibleOption.concat(specialCharacters)
+  guaranteedOption.push(randomizer(specialCharacters))
+}
+if(userOption.hasNumeric){
+  possibleOption = possibleOption.concat(numericCharacters)
+  guaranteedOption.push(randomizer(numericCharacters))
+}
+
+for (var i=0; i < userOption.passwordLength; i++){
+  var possibleName = randomizer(possibleOption)
+  password.push(possibleName)
+}
+for (var i=0; i < guaranteedOption.length; i++){
+  password[i] = guaranteedOption[i]
+}
+
+return password.join("")
+}
 
 // Write password to the #password input
 function writePassword() {
