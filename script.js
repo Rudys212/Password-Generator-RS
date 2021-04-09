@@ -1,5 +1,5 @@
 //Setting up variables
-var generateBtn = document.getElementById("generate");
+var generateBtn = document.querySelector("#generate");
 
 var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
@@ -14,12 +14,12 @@ function userInfo(){
       alert("Please enter a number")
       return
     }
-  
+  //alert to ensure user enters a number for the length of their password
   if(passwordLength < 8 || passwordLength > 128){
       alert("Please select the length of your password. Number between 8 and 128 should be entered.")
       return
     }
-
+//asks user to confirm if they want to include the 4 different characters in their password
   var hasUpper = confirm("Do you want your password to include uppercase letters?");
   var hasLower = confirm("Do you want your password to include lowercase letters?");
   var hasSpecial = confirm("Do you want your password to contain special characters?");
