@@ -32,6 +32,6 @@ The project was created to show how a password generator can be made using Javas
 
 ---
 
-- [Deployed URL](https://github.com/Rudys212/Password-Gene-RS)
+- [Deployed URL](https://rudys212.github.io/Password-Generator-RS/)
 
 - [GitHub URL](https://github.com/Rudys212/Password-Generator-RS)
