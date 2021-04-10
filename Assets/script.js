@@ -20,10 +20,12 @@ function userInfo(){
       return
     }
 //asks user to confirm if they want to include the 4 different characters in their password
+// var for characteristics picked by user
   var hasUpper = confirm("Do you want your password to include uppercase letters?");
   var hasLower = confirm("Do you want your password to include lowercase letters?");
   var hasSpecial = confirm("Do you want your password to contain special characters?");
   var hasNumeric = confirm("Do you want your password to contain numbers?");
+  // if password does not contain at least one of the var listed above. prompt will let user know to fix it
   if(hasUpper === false && hasLower === false && hasSpecial === false && hasNumeric === false){ 
     alert("Please select at least one of the properties listed")
     return
@@ -33,7 +35,7 @@ function userInfo(){
   }
   return userOption 
 }
-
+//randomize what characters will be in the password
 function randomizer(arr) {
   var randIndex = Math.floor(Math.random() * arr.length);
   var randElement = arr[randIndex];
@@ -64,6 +66,7 @@ if(userOption.hasNumeric){
   guaranteedOption.push(randomizer(numericCharacters))
 }
 
+// For loops for adding random characters in password. to ensure characters desired are added
 for (var i=0; i < userOption.passwordLength; i++){
   var possibleName = randomizer(possibleOption)
   password.push(possibleName)
